@@ -1,0 +1,90 @@
+/* Estilos globales */
+html {
+    font-size: 16px;
+    position: static;
+    min-height: auto;
+}
+
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de enlaces */
+a {
+    color: #00f;
+    text-decoration: none; /* Ajustado para eliminar el subrayado por defecto */
+}
+
+    a:hover, a:focus {
+        color: #f00;
+    }
+
+/* Estilo de botones */
+button {
+    background-color: #f0f0f0;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    border-radius: 0;
+}
+
+/* Estilo de inputs */
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 0;
+}
+
+/* Estilo de casillas de verificación */
+input[type="checkbox"] {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+/* Estilo de la barra de navegación */
+.navbar {
+    background-color: #007bff; /* Color de fondo ajustado para que coincida con bg-primary */
+    padding: 10px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff; /* Ajustado para que coincida con text-light */
+    padding: 5px 10px;
+}
+
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
+        color: #f00; /* Color de hover para enlaces en la navbar */
+    }
+
+/* Estilo del pie de página */
+.footer {
+    background-color: #f8f9fa; /* Coincide con bg-light para un diseño consistente */
+    color: #000;
+    padding: 10px 0;
+    text-align: left;
+}
+
+    .footer a {
+        color: #00f;
+        text-decoration: none; /* Elimina el subrayado */
+    }
+
+        .footer a:hover, .footer a:focus {
+            color: #f00; /* Color de hover para enlaces en el footer */
+        }
+
+/* Estilo del contenedor */
+.container {
+    max-width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Ajustes adicionales */
+.dropdown-menu {
+    border-radius: 0;
+}
