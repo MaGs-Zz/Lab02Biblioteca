@@ -1,0 +1,120 @@
+﻿@model BibliotecaWebApplication.Models.Libro
+
+@{
+    ViewData["Title"] = "Detalles del Libro";
+}
+
+<div class="bg-light min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <h2 class="text-center text-uppercase mb-4">Detalles del Libro</h2>
+
+    <div class="w-50">
+        <hr class="bg-secondary" />
+        <dl class="row bg-white p-4 border rounded shadow-sm">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.ISBN)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.ISBN)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Formato)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Formato)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.NumeroPaginas)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.NumeroPaginas)
+            </dd>
+        </dl>
+
+        <div class="row mt-4">
+            <h4 class="text-center">Autor(es)</h4>
+            @if (Model.AutorLibros.Any())
+            {
+                <ul class="list-group list-group-flush">
+                    @foreach (var autorLibro in Model.AutorLibros)
+                    {
+                        <li class="list-group-item bg-light text-dark border-secondary d-flex align-items-center">
+                            <i class="fas fa-user fa-2x text-primary me-2" title="Autor"></i>
+                            <span class="fw-semibold">
+                                @autorLibro.Autor.Nombres @autorLibro.Autor.Apellidos
+                            </span>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>Este libro no tiene autores asociados.</p>
+            }
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="Edit" asp-route-id="@Model?.LibroId" class="btn btn-custom btn-edit"><i class="fas fa-edit"></i> Editar</a>
+            <a asp-action="Index" asp-route-id="@Model?.LibroId" class="btn btn-custom btn-back"><i class="fas fa-arrow-left"></i> Volver</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-custom {
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        border: none;
+        color: white;
+    }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .btn-back {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .min-vh-100 {
+        min-height: 100vh;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    dl {
+        border: 1px solid #ced4da;
+    }
+
+    .bg-secondary {
+        background-color: #6c757d;
+    }
+
+    .list-group-item {
+        padding: 15px;
+    }
+</style>
