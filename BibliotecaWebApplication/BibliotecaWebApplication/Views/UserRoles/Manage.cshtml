@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BibliotecaWebApplication.Models.ViewModels.ManageUserRolesViewModel>
+
+@{
+    ViewData["Title"] = "Asignar Roles de Usuario";
+    var listModel = Model.ToList();
+}
+
+<div class="container p-4">
+    <h2 class="text-center text-uppercase mb-4">Asignar Roles de Usuario</h2>
+
+    <form asp-controller="UserRoles" asp-action="Manage" method="post">
+        <input type="hidden" name="userId" value="@ViewBag.userId" />
+        @for (int i = 0; i < listModel.Count; i++)
+        {
+            var role = listModel[i];
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="model[@i].IsSelected" value="true" asp-for="@role.IsSelected" />
+                <input type="hidden" name="model[@i].RoleId" value="@role.RoleId" />
+                <input type="hidden" name="model[@i].RoleName" value="@role.RoleName" />
+                <label class="form-check-label">@role.RoleName</label>
+            </div>
+        }
+        <button type="submit" class="btn btn-custom btn-create"><i class="fas fa-save"></i> Actualizar Roles</button>
+        <a asp-action="Index" class="btn btn-custom btn-back"><i class="fas fa-arrow-left"></i> Volver</a>
+    </form>
+</div>
+
+<style>
+    .btn-custom {
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-create {
+        background-color: #6c757d; /* Gris claro */
+        border: none;
+        color: white;
+    }
+
+        .btn-create:hover {
+            background-color: #5a6268; /* Gris oscuro */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .btn-back {
+        background-color: #dc3545; /* Rojo suave */
+        border: none;
+        color: white;
+    }
+
+        .btn-back:hover {
+            background-color: #c82333; /* Rojo oscuro */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .form-check {
+        margin-bottom: 1rem;
+    }
+</style>
